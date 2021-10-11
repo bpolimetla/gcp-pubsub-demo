@@ -1,0 +1,29 @@
+<configuration>
+
+	<appender name="CONSOLE_JSON"
+		class="ch.qos.logback.core.ConsoleAppender">
+		<encoder
+			class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+			<layout
+				class="org.springframework.cloud.gcp.logging.StackdriverJsonLayout">
+				<projectId>alert-palace-328614</projectId>
+
+				<includeTraceId>true</includeTraceId>
+				<includeSpanId>true</includeSpanId>
+				<includeLevel>true</includeLevel>
+				<includeThreadName>true</includeThreadName>
+				<includeMDC>true</includeMDC>
+				<includeLoggerName>true</includeLoggerName>
+				<includeFormattedMessage>true</includeFormattedMessage>
+				<includeExceptionInMessage>true</includeExceptionInMessage>
+				<includeContextName>true</includeContextName>
+				<includeMessage>true</includeMessage>
+				<includeException>true</includeException>
+			</layout>
+		</encoder>
+	</appender>
+
+	<root level="INFO">
+		<appender-ref ref="STACKDRIVER" />
+	</root>
+</configuration>

@@ -1,5 +1,7 @@
 package com.gcp.demo;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -20,6 +22,8 @@ import com.google.cloud.spring.pubsub.support.GcpPubSubHeaders;
 @SpringBootApplication
 public class DemoApplication {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(DemoApplication.class);
+	
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
 	}
@@ -33,6 +37,8 @@ public class DemoApplication {
 	}
 	// end::pubsubInputChannel[]
 
+	// Remove block comments to receive messages.
+	// Commented this code to check messages on google platform
 	// tag::messageChannelAdapter[]
 	/*
 	@Bean
@@ -52,7 +58,7 @@ public class DemoApplication {
 	@ServiceActivator(inputChannel = "pubsubInputChannel")
 	public MessageHandler messageReceiver() {
 		return message -> {
-			System.out.println("Message arrived! Payload: " + new String((byte[]) message.getPayload()));
+			LOGGER.info("Message arrived! Payload: " + new String((byte[]) message.getPayload()));
 			BasicAcknowledgeablePubsubMessage originalMessage = message.getHeaders()
 					.get(GcpPubSubHeaders.ORIGINAL_MESSAGE, BasicAcknowledgeablePubsubMessage.class);
 			originalMessage.ack();

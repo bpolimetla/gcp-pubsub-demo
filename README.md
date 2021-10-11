@@ -25,13 +25,28 @@ https://m2msupport.net/m2msupport/generate-service-account-key-in-google-cloud-p
   
 >mvn install  
   
->java -jar target/pubsub-example-0.0.1-SNAPSHOT.jar  
+>java -jar target/pubsub-example-1.0.jar  
   
 Try this  
 http://localhost:8080/greeting?name=message1  
   
 Use this URL to see the messages  
 https://console.cloud.google.com/cloudpubsub/subscription/detail/topic-one-sub?project=alert-palace-328614&tab=messages  
+
+# Logging requests  
+  
+Note: Without gcp installed, this won't work. Check the comments  
+https://cloud.spring.io/spring-cloud-gcp/multi/multi__stackdriver_logging.html  
+  
+# How to test connectivity? 
+   
+   
+pubsub.googleapis.com:443  
+
+Pubsub endpoints list  
+https://cloud.google.com/pubsub/docs/reference/service_apis_overview  
+    
+https://cloud.google.com/network-intelligence-center/docs/connectivity-tests/concepts/overview  
   
 # Reference  
 Add this to .m2/settings.xml file
@@ -51,5 +66,8 @@ https://docs.spring.io/spring-cloud-gcp/docs/1.1.0.M1/reference/html/spring-clou
   
 Rest Service  
 https://spring.io/guides/gs/rest-service/  
+  
+GCP Spring projects Reference  
+https://github.com/GoogleCloudPlatform/spring-cloud-gcp  
 
 -o-
